@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class TexttestFixture {
+public class TexttestFixtureRefactored {
     public static void main(String[] args) {
         System.out.println("OMGHAI!");
 
@@ -16,7 +16,7 @@ public class TexttestFixture {
                 // this conjured item does not work properly yet
                 new Item("Conjured Mana Cake", 3, 6) };
 
-        GildedRose app = new GildedRose(items);
+        GildedRoseRefactored app = new GildedRoseRefactored(items);
 
         int days = 15;
         if (args.length > 0) {

@@ -1,14 +1,24 @@
 package com.gildedrose;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class GildedRoseTest {
+import org.junit.jupiter.api.Test;
+
+public class GildedRoseRefactoredTest {
+
+
+    @Test
+    void foo() {
+        Item[] items = new Item[] {new Item("foo", 0, 0)};
+        GildedRoseRefactored app = new GildedRoseRefactored(items);
+        app = new GildedRoseRefactored(items);
+        app.updateQuality();
+        assertEquals("foo", app.items[0].name);
+    }
 
     @Test
     public void defaultItemDecreasesSellIn() {
-        GildedRose app = newGildedRose("default item", 0, 0);
+        GildedRoseRefactored app = newGildedRoseRefactored("default item", 0, 0);
 
         app.updateQuality();
 
@@ -17,7 +27,7 @@ class GildedRoseTest {
 
     @Test
     public void brieIncreaseQuality() {
-        GildedRose app = newGildedRose("Aged Brie", 1, 1);
+        GildedRoseRefactored app = newGildedRoseRefactored("Aged Brie", 1, 1);
 
         app.updateQuality();
 
@@ -27,7 +37,7 @@ class GildedRoseTest {
 
     @Test
     public void brieQualityMax() {
-        GildedRose app = newGildedRose("Aged Brie", 1, 49);
+        GildedRoseRefactored app = newGildedRoseRefactored("Aged Brie", 1, 49);
 
         app.updateQuality();
         assertEquals(0, getSellIn(app));
@@ -39,7 +49,7 @@ class GildedRoseTest {
 
     @Test
     public void brieStartingConditions() {
-        GildedRose app = newGildedRose("Aged Brie", 2, 0);
+        GildedRoseRefactored app = newGildedRoseRefactored("Aged Brie", 2, 0);
 
         app.updateQuality();
 
@@ -48,7 +58,7 @@ class GildedRoseTest {
 
     @Test
     public void brieSecondDay() {
-        GildedRose app = newGildedRose("Aged Brie", 1, 1);
+        GildedRoseRefactored app = newGildedRoseRefactored("Aged Brie", 1, 1);
 
         app.updateQuality();
 
@@ -58,7 +68,7 @@ class GildedRoseTest {
 
     @Test
     public void brieThirdDay() {
-        GildedRose app = newGildedRose("Aged Brie", 0, 2);
+        GildedRoseRefactored app = newGildedRoseRefactored("Aged Brie", 0, 2);
 
         app.updateQuality();
 
@@ -67,7 +77,7 @@ class GildedRoseTest {
 
     @Test
     public void brieFourthDay() {
-        GildedRose app = newGildedRose("Aged Brie", -1, 4);
+        GildedRoseRefactored app = newGildedRoseRefactored("Aged Brie", -1, 4);
 
         app.updateQuality();
 
@@ -76,7 +86,7 @@ class GildedRoseTest {
 
     @Test
     public void backstagePassesDecreaseQualityMoreThanTenDays() {
-        GildedRose app = newGildedRose("Backstage passes to a TAFKAL80ETC concert", 12, 1);
+        GildedRoseRefactored app = newGildedRoseRefactored("Backstage passes to a TAFKAL80ETC concert", 12, 1);
 
         app.updateQuality();
 
@@ -86,7 +96,7 @@ class GildedRoseTest {
 
     @Test
     public void backstagePassesDecreaseQualityMoreTenDays() {
-        GildedRose app = newGildedRose("Backstage passes to a TAFKAL80ETC concert", 10, 1);
+        GildedRoseRefactored app = newGildedRoseRefactored("Backstage passes to a TAFKAL80ETC concert", 10, 1);
 
         app.updateQuality();
 
@@ -96,7 +106,7 @@ class GildedRoseTest {
 
     @Test
     public void backstagePassesDecreaseQualityMoreFiveDays() {
-        GildedRose app = newGildedRose("Backstage passes to a TAFKAL80ETC concert", 5, 1);
+        GildedRoseRefactored app = newGildedRoseRefactored("Backstage passes to a TAFKAL80ETC concert", 5, 1);
 
         app.updateQuality();
 
@@ -106,7 +116,7 @@ class GildedRoseTest {
 
     @Test
     public void backstagePassesItemExpires() {
-        GildedRose app = newGildedRose("Backstage passes to a TAFKAL80ETC concert", 0, 50);
+        GildedRoseRefactored app = newGildedRoseRefactored("Backstage passes to a TAFKAL80ETC concert", 0, 50);
 
         app.updateQuality();
 
@@ -115,7 +125,7 @@ class GildedRoseTest {
 
     @Test
     public void backstagePassesItemMaxQuality() {
-        GildedRose app = newGildedRose("Backstage passes to a TAFKAL80ETC concert", 5, 50);
+        GildedRoseRefactored app = newGildedRoseRefactored("Backstage passes to a TAFKAL80ETC concert", 5, 50);
 
         app.updateQuality();
 
@@ -125,7 +135,7 @@ class GildedRoseTest {
 
     @Test
     public void backstagePassesFirstDay() {
-        GildedRose app = newGildedRose("Backstage passes to a TAFKAL80ETC concert", 10, 49);
+        GildedRoseRefactored app = newGildedRoseRefactored("Backstage passes to a TAFKAL80ETC concert", 10, 49);
 
         app.updateQuality();
 
@@ -135,7 +145,7 @@ class GildedRoseTest {
 
     @Test
     public void backstagePassesSecondDay() {
-        GildedRose app = newGildedRose("Backstage passes to a TAFKAL80ETC concert", 9, 50);
+        GildedRoseRefactored app = newGildedRoseRefactored("Backstage passes to a TAFKAL80ETC concert", 9, 50);
 
         app.updateQuality();
 
@@ -145,7 +155,7 @@ class GildedRoseTest {
 
     @Test
     public void defaultItemDecreasesQuality() {
-        GildedRose app = newGildedRose("foo", 2, 1);
+        GildedRoseRefactored app = newGildedRoseRefactored("foo", 2, 1);
 
         app.updateQuality();
 
@@ -155,7 +165,7 @@ class GildedRoseTest {
 
     @Test
     public void defaultItemDecreasesQualitySellInLessThanZero() {
-        GildedRose app = newGildedRose("foo", 0, 5);
+        GildedRoseRefactored app = newGildedRoseRefactored("foo", 0, 5);
 
         app.updateQuality();
 
@@ -164,7 +174,7 @@ class GildedRoseTest {
 
     @Test
     public void defaultItemQualityBelowZero() {
-        GildedRose app = newGildedRose("foo", 0, 0);
+        GildedRoseRefactored app = newGildedRoseRefactored("foo", 0, 0);
 
         app.updateQuality();
 
@@ -173,7 +183,7 @@ class GildedRoseTest {
 
     @Test
     public void sulfurasFixeQuality() {
-        GildedRose app = newGildedRose("Sulfuras, Hand of Ragnaros", 1, 80);
+        GildedRoseRefactored app = newGildedRoseRefactored("Sulfuras, Hand of Ragnaros", 1, 80);
 
         assertEquals(1, getSellIn(app));
         assertEquals(80, getQuality(app));
@@ -182,7 +192,7 @@ class GildedRoseTest {
 
     @Test
     public void conjuredItemDecrease() {
-        GildedRose app = newGildedRose("Conjured", 2, 5);
+        GildedRoseRefactored app = newGildedRoseRefactored("Conjured", 2, 5);
 
         app.updateQuality();
 
@@ -192,7 +202,7 @@ class GildedRoseTest {
 
     @Test
     public void conjuredItemDecreaseFiveDays() {
-        GildedRose app = newGildedRose("Conjured", 0, 5);
+        GildedRoseRefactored app = newGildedRoseRefactored("Conjured", 0, 5);
 
         app.updateQuality();
 
@@ -201,28 +211,28 @@ class GildedRoseTest {
 
     @Test
     public void conjuredItemDecreaseMinQuality() {
-        GildedRose app = newGildedRose("Conjured", 0, 0);
+        GildedRoseRefactored app = newGildedRoseRefactored("Conjured", 0, 0);
 
         app.updateQuality();
 
         assertItem(app, 1, 0);
     }
 
-    private void assertItem(GildedRose app, int sellIn, int quality) {
+    private void assertItem(GildedRoseRefactored app, int sellIn, int quality) {
         assertEquals(-sellIn, getSellIn(app));
         assertEquals(quality, getQuality(app));
     }
 
-    private GildedRose newGildedRose(String itemName, int itemSellIn, int itemQuality) {
+    private GildedRoseRefactored newGildedRoseRefactored(String itemName, int itemSellIn, int itemQuality) {
         Item[] items = new Item[] {new Item(itemName, itemSellIn, itemQuality)};
-        return new GildedRose(items);
+        return new GildedRoseRefactored(items);
     }
 
-    private int getSellIn(GildedRose app) {
+    private int getSellIn(GildedRoseRefactored app) {
         return app.items[0].sellIn;
     }
 
-    private int getQuality(GildedRose app) {
+    private int getQuality(GildedRoseRefactored app) {
         return app.items[0].quality;
     }
 
